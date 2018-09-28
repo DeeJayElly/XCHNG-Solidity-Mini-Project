@@ -6,7 +6,7 @@ contract('CarExchange', function (accounts) {
   var buyer = accounts[2];
   var car1 = 11111111;
   var car2 = 22222222;
-  var car1Value = 10;
+  var car1Value = 1;
   var sellerBalance;
   var buyerBalance;
 

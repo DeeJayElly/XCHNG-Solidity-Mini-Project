@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car listing</title>
+  <meta charset="utf8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="width:650px;">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="text-center" style="font-size:4em;">Car Listing</h1>
+      <hr/>
+      <br/>
+      <a class="pull-left" href="index.html"
+         style="padding-left:100px; margin-bottom: 30px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color:#474646; font-weight:bold;font-size:1.4em;">Marketplace</a>
+      <a class="pull-right" href="user.html"
+         style="padding-right:100px; margin-bottom: 30px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color:#474646; font-weight:bold;font-size:1.4em;">My
+        place</a>
+    </div>
+  </div>
+  <div class="row">
+    <form onSubmit="App.register(); return false;" role="form">
+      <div class="form-group">
+        <div class="input-group">
+          <input id="vinToRegister" class="form-control input-lg" type="number" name="number" min="1" pattern="[0-9]">
+          </input>
+          <span class="input-group-btn">
+                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                            </span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="loader">
+    <p class="text-center">Loading...</p>
+  </div>
+  <div id="content">
+    <p class="text-center"><span id="numCarsRegistered"></span> cars registered</p>
+    <div id="results"></div>
+  </div>
+</div>
+<script src="./js/libraries/jquery-3.3.1.min.js"></script>
+<script src="./js/libraries/bootstrap.min.js"></script>
+<script src="./js/libraries/web3.min.js"></script>
+<script src="./js/libraries/truffle-contract.min.js"></script>
+<script src="./js/userApp.js"></script>
+</body>
+</html>

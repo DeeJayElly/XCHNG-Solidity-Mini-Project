@@ -1,15 +1,26 @@
 {
-  "name": "angular-truffle-box",
-  "version": "0.0.0",
+  "name": "car-listing-solidity",
+  "version": "0.0.1",
   "license": "MIT",
-  "keywords": [],
-  "description": "Tab Trust Wallet Smart Contracts",
-  "author": "Tap Trust Wallet",
-  "repository": "https://github.com/taptrust/taptrust-wallet-contracts",
+  "keywords": [
+    "Ethereum",
+    "Blockchain",
+    "car-listing"
+  ],
+  "description": "Car Listing Smart Contracts",
+  "author": "Aleksandar Djordjevic",
+  "repository": "https://github.com/DeeJayElly/XCHNG-Solidity-Mini-Project",
+  "bugs": {
+    "url": "https://github.com/DeeJayElly/XCHNG-Solidity-Mini-Project/issues"
+  },
   "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "dev": "lite-server",
     "build": "ng build",
     "test": "ng test --watch=false",
     "lint": "ng lint",
@@ -58,6 +69,7 @@
     "karma-coverage-istanbul-reporter": "^1.4.2",
     "karma-jasmine": "^1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lite-server": "^2.3.0",
     "protractor": "^5.4.1",
     "protractor-console-plugin": "^0.1.1",
     "solidity-coverage": "^0.5.4",
