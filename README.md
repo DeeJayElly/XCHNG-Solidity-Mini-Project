@@ -30,12 +30,12 @@ to install dependencies. In order install these dependencies, you will also need
    
 4. Run your Ethereum client.
 
-a) For Ganache CLI
-  ```bash
-  ganache-cli
-  ```
+  a) For Ganache CLI
+   ```bash
+   ganache-cli
+   ```
  
-b) For Ganache GUI
+  b) For Ganache GUI
    ```bash
    Run Ganache GUI app
    ``` 
