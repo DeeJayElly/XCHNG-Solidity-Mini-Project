@@ -86,14 +86,34 @@ contract CarExchange is Ownable {
     return true;
   }
 
+  /**
+   * @dev Get cars count function.
+   *
+   * @return uint - Number of all cars.
+   */
   function getCarCount() public view returns (uint) {
     return cars.length;
   }
 
+  /**
+   * @dev Get car by vinNumber function.
+   *
+   * @param _vinNumber uint - Vin number (id) of the car.
+   * @return value uint - Price of the car.
+   * @return owner address - Owner of the car.
+   * @return listed bool - True/false if car is listed or not for sale.
+   * @return index uint - Index of the car.
+   */
   function getCar(uint _vinNumber) public view returns (uint value, address owner, bool listed, uint index) {
     return (carStructs[_vinNumber].value, carStructs[_vinNumber].owner, carStructs[_vinNumber].listed, carStructs[_vinNumber].index);
   }
 
+  /**
+   * @dev Get car count per owner function.
+   *
+   * @param _owner address - The address of owner of the car.
+   * @return uint count - Counter of cars per given owner.
+   */
   function getCarCountPerOwner(address _owner) public view returns (uint count) {
     require(_owner != address(0));
     return ownerCarCount[_owner];
@@ -104,7 +124,7 @@ contract CarExchange is Ownable {
    *
    * @param _owner address - The address of owner of the car.
    * @param _vinNumber uint - Vin Number (index) of the given car.
-   * @return bool - Success if the removal of the ownership has happen.
+   * @return success bool - Success if the removal of the ownership has happen.
    */
   function register(address _owner, uint _vinNumber) public returns (bool success) {
     require(_owner != address(0));
@@ -128,7 +148,7 @@ contract CarExchange is Ownable {
    *
    * @param _vinNumber uint - Vin number (index) of the car.
    * @param _value uint - Price of the car.
-   * @return bool - Success if the removal of the ownership has happen.
+   * @return success bool - Success if the removal of the ownership has happen.
    */
   function buy(uint _vinNumber, uint _value) public payable returns (bool success) {
     // require that the buyer is a true person
@@ -163,7 +183,7 @@ contract CarExchange is Ownable {
    *
    * @param _vinNumber uint - Vin number (index) of the car.
    * @param _value uint - Price of the car.
-   * @return bool - Success if the removal of the ownership has happen.
+   * @return success bool - Success if the removal of the ownership has happen.
    */
   function list(uint _vinNumber, uint _value) public returns (bool success) {
     //require that the user is a true user
@@ -191,6 +211,14 @@ contract CarExchange is Ownable {
     return ownerToCars[_owner];
   }
 
+  /**
+   * @dev Return all listed cars function.
+   *
+   * @return j uint - Id of the car.
+   * @return carList uint[] - Car list.
+   * @return valueList uint[] - Value list.
+   * @return ownerList address[] - Owners list.
+   */
   function getAllListedCars() public view returns (uint, uint[], uint[], address[]) {
     uint[] memory carList = new uint[](cars.length);
     uint[] memory valueList = new uint[](cars.length);
