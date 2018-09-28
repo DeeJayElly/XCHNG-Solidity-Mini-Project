@@ -31,7 +31,7 @@ contract CarExchange is Ownable {
   mapping(address => uint[]) ownerToCars;
 
   // A list of car count per owner
-  mapping(address => uint256) ownerCarCount;
+  mapping(address => uint) ownerCarCount;
 
   /**
    * @dev CarExchange constructor function.
@@ -84,6 +84,19 @@ contract CarExchange is Ownable {
     uint index = indexOf(_owner, _vinNumber);
     removeOwnershipAtIndex(_owner, index);
     return true;
+  }
+
+  function getCarCount() public view returns (uint) {
+    return cars.length;
+  }
+
+  function getCar(uint _vinNumber) public view returns (uint value, address owner, bool listed, uint index) {
+    return (carStructs[_vinNumber].value, carStructs[_vinNumber].owner, carStructs[_vinNumber].listed, carStructs[_vinNumber].index);
+  }
+
+  function getCarCountPerOwner(address _owner) public view returns (uint count) {
+    require(_owner != address(0));
+    return ownerCarCount[_owner];
   }
 
   /**
@@ -162,7 +175,7 @@ contract CarExchange is Ownable {
     carStructs[_vinNumber].value = _value;
     carStructs[_vinNumber].listed = true;
 
-    emit Listed(_vinNumber, carStructs[_vinNumber].owner, _value);
+    emit Listed(_vinNumber, msg.sender, _value);
 
     return true;
   }
@@ -176,5 +189,22 @@ contract CarExchange is Ownable {
   function ownedCars(address _owner) external view returns (uint[] vinNumbers) {
     require(_owner != address(0));
     return ownerToCars[_owner];
+  }
+
+  function getAllListedCars() public view returns (uint, uint[], uint[], address[]) {
+    uint[] memory carList = new uint[](cars.length);
+    uint[] memory valueList = new uint[](cars.length);
+    address[] memory ownerList = new address[](cars.length);
+    uint j = 0;
+    for (uint i = 0; i < cars.length; i++) {
+      Car storage car = carStructs[cars[i]];
+      if (car.listed) {
+        carList[j] = cars[i];
+        valueList[j] = car.value;
+        ownerList[j] = car.owner;
+        j++;
+      }
+    }
+    return (j, carList, valueList, ownerList);
   }
 }
