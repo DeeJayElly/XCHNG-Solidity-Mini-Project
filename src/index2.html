@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car listing</title>
+  <meta charset="utf8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="width:650px;">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="text-center" style="font-size:4em;">Car Listing</h1>
+      <hr/>
+      <br/>
+      <a id="marketplaceTab" class="pull-left" href="#"
+         style="padding-left:100px; margin-bottom: 30px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color:#474646; font-weight:bold;font-size:1.4em;">Marketplace</a>
+      <a id="userTab" class="pull-right" href="#"
+         style="padding-right:100px; margin-bottom: 30px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; color:#474646; font-weight:bold;font-size:1.4em;">My
+        place</a>
+    </div>
+  </div>
+  <div id="indexPage">
+    <div class="row">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="./images/img1.jpg" alt="Chania">
+            <div class="carousel-caption">
+              <p style="font-size:2em;">The best car marketplace EVER</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="./images/img2.jpg" alt="Chicago">
+            <div class="carousel-caption">
+              <p style="font-size:2em;">The best car marketplace EVER</p>
+            </div>
+          </div>
+          <div class="item">
+            <img src="./images/img3.jpeg" alt="New York">
+            <div class="carousel-caption">
+              <p style="font-size:2em;">The best car marketplace EVER</p>
+            </div>
+          </div>
+        </div>
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <br/>
+      <hr/>
+      <div id="loader">
+        <p class="text-center">Loading...</p>
+      </div>
+      <div id="content">
+        <p class="text-center">There are now <span id="numberListedCars"></span> cars listed</p>
+      </div>
+    </div>
+  </div>
+  <div id="userPage">
+    <div class="row">
+      <form onSubmit="App.register(); return false;" role="form">
+        <div class="form-group">
+          <div class="input-group">
+            <input id="vinToRegister" class="form-control input-lg" type="number" name="number" value="1" min="1"
+                   pattern="[0-9]">
+            </input>
+            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                                </span>
+          </div>
+        </div>
+      </form>
+    </div>
+    <p class="text-center"><span id="numCarsRegistered"></span> cars registered</p>
+  </div>
+</div>
+<script src="./js/libraries/jquery-3.3.1.min.js"></script>
+<script src="./js/libraries/bootstrap.min.js"></script>
+<script src="./js/libraries/web3.min.js"></script>
+<script src="./js/libraries/truffle-contract.min.js"></script>
+<script src="./js/app.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#userPage").hide();
+    $("#marketplaceTab").click(function () {
+      $("#indexPage").show();
+      $("#userPage").hide();
+    });
+    $("#userTab").click(function () {
+      $("#indexPage").hide();
+      $("#userPage").show();
+    });
+  });
+</script>
+</body>
+</html>
