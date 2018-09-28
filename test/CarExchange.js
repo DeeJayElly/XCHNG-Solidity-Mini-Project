@@ -1,9 +1,7 @@
 const CarExchange = artifacts.require('./CarExchange.sol');
 var app;
-var BigNumber = require('bignumber.js');
 
 contract('CarExchange', function (accounts) {
-  var admin = accounts[0];
   var seller = accounts[1];
   var buyer = accounts[2];
   var car1 = 11111111;
@@ -27,7 +25,7 @@ contract('CarExchange', function (accounts) {
     return CarExchange.deployed().then(function (instance) {
       app = instance;
       return app.register(seller, car1);
-    }).then(function (receipt) {
+    }).then(function () {
       return app.getCarCount();
     }).then(function (carCount) {
       assert.equal(carCount, 1, 'Car not registered correctly');
@@ -44,7 +42,7 @@ contract('CarExchange', function (accounts) {
     return CarExchange.deployed().then(function (instance) {
       app = instance;
       return app.register(seller, car2);
-    }).then(function (receipt) {
+    }).then(function () {
       return app.getCarCount();
     }).then(function (carCount) {
       assert.equal(carCount, 2, 'Second car not registered correctly');
@@ -87,7 +85,7 @@ contract('CarExchange', function (accounts) {
     return CarExchange.deployed().then(function (instance) {
       app = instance;
       return app.list(car1.toString(), web3.utils.toWei(car1Value.toString(), 'ether'), {from: seller});
-    }).then(function (receipt) {
+    }).then(function () {
       return app.getCar(car1);
     }).then(function (res) {
       assert.equal(res[0].toString(), web3.utils.toWei(car1Value.toString(), 'ether'), 'Value not set properly');
@@ -122,7 +120,7 @@ contract('CarExchange', function (accounts) {
         from: buyer,
         value: web3.utils.toWei(car1Value.toString(), 'ether')
       });
-    }).then(function (receipt) {
+    }).then(function () {
       return app.getCarCountPerOwner(seller);
     }).then(function (sellerCarCount) {
       assert.equal(sellerCarCount, 1, 'car not sold correctly');
