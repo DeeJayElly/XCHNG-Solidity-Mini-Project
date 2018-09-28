@@ -221,10 +221,10 @@ Running the Truffle tests:
   truffle test ./test/"NameOfTheFile".js --network ganache
   ```
   
-## NOTE
+## *NOTE*:
 
-UI is not the best looking because, this is just a demo Proof of Concept App.
-If some unexpected errors occur, try to refresh the page or restart the  Lite Server.
+*UI is not the best looking because this is just a demo Proof of Concept App.
+If some unexpected errors occur, try to refresh the page or restart the  Lite Server.*
   
 ## FAQ
 
