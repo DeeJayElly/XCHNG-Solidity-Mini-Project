@@ -7,10 +7,10 @@ contract CarExchange is Ownable {
   // We emit this event whenever a car is newly registered to the blockchain
   event Registered(uint indexed _vinNumber, address indexed _owner);
 
-  // We emit this event whenver a car is bought from seller to buyer
+  // We emit this event whenever a car is bought from seller to buyer
   event Bought(uint indexed _vinNumber, address indexed _oldOwner, address indexed _newOwner, uint _value);
 
-  // We emit this event whenver a car is listed for sale
+  // We emit this event whenever a car is listed for sale
   event Listed(uint indexed _vinNumber, address indexed _carOwner, uint _value);
 
   struct Car {
@@ -82,11 +82,11 @@ contract CarExchange is Ownable {
     //require that the car is for sale
     require(carStructs[_vinNumber].listed);
     //require that the amount of ether sent is equal to the value of that car
-    require(msg.value == carStructs[_vinNumber].value);
+    require(_value == carStructs[_vinNumber].value);
 
     address previousOwner = carStructs[_vinNumber].owner;
 
-    //change the ownershipt of the car
+    //change the ownership of the car
     carStructs[_vinNumber].owner = msg.sender;
     carStructs[_vinNumber].listed = false;
 
@@ -97,9 +97,9 @@ contract CarExchange is Ownable {
     ownerCarCount[previousOwner]--;
 
     // transfer the money to the seller
-    previousOwner.transfer(msg.value);
+    previousOwner.transfer(_value);
 
-    emit Bought(_vinNumber, previousOwner, msg.sender, msg.value);
+    emit Bought(_vinNumber, previousOwner, msg.sender, _value);
 
     return true;
   }
