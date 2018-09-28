@@ -3,7 +3,6 @@ const infura_apikey = '04b7e53ea51a4c85972207c27f35f3f0';
 // Either use this key or get yours at https://infura.io/signup. It's free.
 const mnemonic = 'champion ski expand average siren innocent law rent choose fatigue session pig';
 
-
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
   // for more about customizing your Truffle configuration!
